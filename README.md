@@ -24,5 +24,12 @@ rails server
 ## カタログ設計書、テーブル定義書
 https://docs.google.com/spreadsheets/d/1m5AfSgtAAt746vAAg6fadR-U1b0m4ryj6jHyxE3I9II/edit?usp=sharing
 
-## ER図、画面偏移図、ワイヤーフレーム
+## ER図
+[embed]https://drive.google.com/file/d/161z8WKojZ6mEBaIC8-JIGLQHCPlw_p7S/view?usp=sharing[/embed]
+
+
+## 画面偏移図
+[embed]https://drive.google.com/file/d/1qyiPXoAm1d7QG_mm4wgDHDZnvGnJBIsT/view?usp=sharing[/embed]
+
+## ワイヤーフレーム
 https://drive.google.com/file/d/12EqZlzgliix-2iVYgHNQC5gaxZJv_rss/view?usp=sharing
