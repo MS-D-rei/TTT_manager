@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 開発言語
+- Ruby 3.0.1
+- Ruby on Rails 6.0.3
 
-Things you may want to cover:
+## 就業Termの技術
+- お気に入り機能
+- コメント機能
+- devise
 
-* Ruby version
+## カリキュラム外の技術
+- Vue.js
 
-* System dependencies
+## 実行手順
+```
+git clone git@github.com:MS-D-rei/TTT_manager.git
+cd TTT_manager
+bundle install
+rails db:create db:migrate
+rails db:seed
+rails server
+```
+## カタログ設計書、テーブル定義書
+https://docs.google.com/spreadsheets/d/1m5AfSgtAAt746vAAg6fadR-U1b0m4ryj6jHyxE3I9II/edit?usp=sharing
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## ER図、画面偏移図、ワイヤーフレーム
+https://drive.google.com/file/d/12EqZlzgliix-2iVYgHNQC5gaxZJv_rss/view?usp=sharing
