@@ -10,7 +10,7 @@
 - devise
 
 ## カリキュラム外の技術
-- Vue.js
+- redcarpet
 
 ## 実行手順
 ```
