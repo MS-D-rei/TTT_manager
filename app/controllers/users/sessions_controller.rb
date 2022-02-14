@@ -27,8 +27,8 @@ class Users::SessionsController < Devise::SessionsController
       sign_in @user
       redirect_to root_url
     else
-      flash[:danger] = 'Invalid email/password combination.'
-      redirect_to new_user_session_path
+      flash.now[:danger] = 'Invalid email/password combination.'
+      render :new
     end
   end
 
