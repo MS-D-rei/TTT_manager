@@ -19,9 +19,6 @@
 <%= f.select :status, Topic.statuses.keys.map { |key| [key, key] } %><br>
 
 <%= f.submit yield(:button_name), class: 'btn btn-primary' %>
-
 <% end %>
-
-<%= link_to 'Back', :back %>
 </div>
 </div>

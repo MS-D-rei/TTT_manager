@@ -1,11 +1,13 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: %i[edit update destroy]
+  
 
   def index
   end
   
   def show
-    @topic = Topic.find(params[:id])
+    @topic = Topic.includes(:user).find(params[:id])
   end
 
   def new
@@ -38,9 +40,19 @@ class TopicsController < ApplicationController
   end
 
   def destroy
+    @topic = Topic.find(params[:id])
+    @topic.destroy
+    flash[:success] = 'The topic has been deleted'
+    redirect_to root_url
   end
 
   private
+
+  def correct_user
+    @topic = Topic.find(params[:id])
+
+    redirect_to root_url unless current_user.topics.include?(@topic)
+  end
 
   def topic_params
     params.require(:topic).permit(:title, :description, :priority, :deadline, :status)
