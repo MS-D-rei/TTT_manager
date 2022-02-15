@@ -1,5 +1,6 @@
 class Topic < ApplicationRecord
   belongs_to :user
+  belongs_to :team
 
   validates :title, presence: true, length: { maximum: 200 }
   validates :description, presence: true, length: { maximum: 1000 }
