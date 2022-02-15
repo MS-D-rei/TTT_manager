@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <tr>
+      <th>team</th>
+      <th>topic</th>
+      <th>priority</th>
+      <th>deadline</th>
+      <th>status</th>
+      <th>task</th>
+      <th>priority</th>
+      <th>deadline</th>
+      <th>status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.topics.each do |topic| %>
+    <tr>
+      <td><%= 'team.name' %></td>
+      <td><%= topic.title %></td>
+      <td><%= topic.priority %></td>
+      <td><%= topic.deadline.strftime("%Y-%m-%d") %></td>
+      <td><%= topic.status %></td>
+      <td><%= 'task.title' %></td>
+      <td><%= 'task.priority' %></td>
+      <td><%= 'task.deadline' %></td>
+      <td><%= 'task.status' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
