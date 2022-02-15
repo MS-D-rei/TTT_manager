@@ -17,7 +17,7 @@
     <% @user.topics.each do |topic| %>
     <tr>
       <td><%= 'team.name' %></td>
-      <td><%= topic.title %></td>
+      <td><%= link_to "#{topic.title}", topic_path(topic) %></td>
       <td><%= topic.priority %></td>
       <td><%= topic.deadline.strftime("%Y-%m-%d") %></td>
       <td><%= topic.status %></td>

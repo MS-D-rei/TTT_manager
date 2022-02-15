@@ -1,0 +1,11 @@
+<h3>Topic #show</h3>
+
+<%= link_to 'Edit this topic', edit_topic_path(@topic) %><br>
+
+<%= @topic.title %><br>
+<%= @topic.description %><br>
+<%= @topic.priority %><br>
+<%= @topic.deadline.strftime("%Y-%m-%d") %><br>
+<%= @topic.status %><br>
+
+<%= link_to 'Back', :back %>

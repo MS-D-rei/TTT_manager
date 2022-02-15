@@ -5,6 +5,7 @@ class TopicsController < ApplicationController
   end
   
   def show
+    @topic = Topic.find(params[:id])
   end
 
   def new
@@ -22,6 +23,18 @@ class TopicsController < ApplicationController
   end
 
   def edit
+    @topic = Topic.find(params[:id])
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+    if @topic.update(topic_params)
+      flash[:success] = 'Updated the topic content'
+      redirect_to root_url
+    else
+      flash.now[:danger] = 'Please edit again to fulfill the requirements'
+      render :edit
+    end
   end
 
   def destroy
