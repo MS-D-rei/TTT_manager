@@ -1,0 +1,31 @@
+<h3>Team #index</h3>
+
+<%= form_with(model: Team.new, local: true) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :leader_id, value: current_user.id %>
+  <%= f.submit 'Create new team', class: 'btn btn-primary' %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team.name</th>
+      <th>leader name</th>
+      <th>users.name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+    <tr>
+      <td><%= team.name %>
+      <td>team.leader.name</td>
+      <td>
+      <%# <%= team.users.each do |user| %>
+      <%# <%= user.name %> %>
+      <%# <% end %> %> %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

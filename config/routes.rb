@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[index show]
   resources :topics
+  resources :teams
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
