@@ -28,6 +28,10 @@ class TeamsController < ApplicationController
   end
 
   def destroy
+    @team = Team.find(params[:id])
+    @team.destroy
+    flash[:success] = 'The team has been disbanded'
+    redirect_to teams_path
   end
 
   private

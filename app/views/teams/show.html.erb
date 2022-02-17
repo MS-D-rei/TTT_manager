@@ -20,5 +20,5 @@
 
 <%= link_to 'create new topic', new_topic_path %><br>
 
-
+<%= button_to 'Delete this team', team_path(@team), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 
