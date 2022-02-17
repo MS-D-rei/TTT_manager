@@ -4,12 +4,15 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
+    @team = Team.includes(:members).find(params[:id])
   end
 
   def create
     @team = Team.new(team_params)
     if @team.save
+      user_id = current_user.id
+      team_id = @team.id
+      Assign.create(user_id: user_id, team_id: team_id)
       flash[:success] = 'New team has been created'
     else
       flash[:danger] = 'Please input team name'

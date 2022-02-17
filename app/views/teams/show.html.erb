@@ -4,17 +4,33 @@
   <div class='col-6'>
     Team name: <%= @team.name %><br>
     Leader: <%= @team.leader.name %><br>
-    Member: member 1<br>
+    Member:
+    <% @team.assigns.each do |assign| %>
+      <%= assign.user.name %>
+      <%= button_to 'Drop', assign_path(assign), method: :delete, params: { user_id: assign.user.id, team_id: @team.id } %>
+    <% end %>
   </div>
 
   <div class='col-4'>
+    <div>
     <%= form_with(model: @team, local: true) do |f| %>
 
-    <%= f.text_field :name, class: 'form-control' %>
-    <%= f.hidden_field :leader_id, value: @team.leader_id %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.hidden_field :leader_id, value: @team.leader_id %>
 
-    <%= f.submit 'name update', class: 'btn btn-primary' %>
+      <%= f.submit 'name update', class: 'btn btn-primary' %>
     <% end %>
+    </div>
+
+    <div>
+    <%= form_with(model: Assign.new, local: true) do |f| %>
+
+      <%= f.select :user_id, User.pluck(:name, :id), include_blank: 'Please select' %>
+      <%= f.hidden_field :team_id, value: @team.id %>
+
+      <%= f.submit 'invite', class: 'btn btn-primary' %>
+    <% end %>
+    </div>
   </div>
 </div>
 
