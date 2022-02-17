@@ -1,3 +1,24 @@
 <h3>Team #show</h3>
 
-<%= @team.name %>
+<div class='row'>
+  <div class='col-6'>
+    Team name: <%= @team.name %><br>
+    Leader: <%= @team.leader.name %><br>
+    Member: member 1<br>
+  </div>
+
+  <div class='col-4'>
+    <%= form_with(model: @team, local: true) do |f| %>
+
+    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.hidden_field :leader_id, value: @team.leader_id %>
+
+    <%= f.submit 'name update', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'create new topic', new_topic_path %><br>
+
+
+

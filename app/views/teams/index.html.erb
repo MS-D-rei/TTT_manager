@@ -18,8 +18,8 @@
   <tbody>
     <% @teams.each do |team| %>
     <tr>
-      <td><%= team.name %>
-      <td>team.leader.name</td>
+      <td><%= link_to "#{team.name}", team_path(team) %>
+      <td><%= team.leader.name %></td>
       <td>
       <%# <%= team.users.each do |user| %>
       <%# <%= user.name %> %>

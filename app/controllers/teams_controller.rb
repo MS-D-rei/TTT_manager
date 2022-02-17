@@ -17,10 +17,14 @@ class TeamsController < ApplicationController
     redirect_to teams_path
   end
 
-  def edit
-  end
-
   def update
+    @team = Team.find(params[:id])
+    if @team.update(team_params)
+      flash[:success] = 'Team name has been updated'
+    else
+      flash[:danger] = 'Please input team name'
+    end
+    redirect_to teams_path
   end
 
   def destroy
