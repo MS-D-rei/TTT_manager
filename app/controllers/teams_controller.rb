@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all
+    @teams = Team.includes(:leader).all
   end
 
   def show
