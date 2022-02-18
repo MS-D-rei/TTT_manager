@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.includes(assigns: :user).find(params[:id])
+    @team = Team.includes(assigns: :user, topics: :tasks).find(params[:id])
   end
 
   def create

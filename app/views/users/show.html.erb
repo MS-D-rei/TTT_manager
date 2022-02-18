@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
 <h2>test</h2>
 
-<%= link_to 'log out', destroy_user_session_path, method: :delete %><br>
+<%= link_to t('view.log_out'), destroy_user_session_path, method: :delete %><br>
 
 <div class='row'>
   <div class='col-4'>
-    <%= @user.name %>
-    <%= @user.email %><br>
+    <%= t('user.name') %>: <%= @user.name %><br>
+    <%= t('user.email') %>: <%= @user.email %>
   </div>
 </div>
 

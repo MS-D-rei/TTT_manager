@@ -1,15 +1,14 @@
 <% provide(:button_name, 'create task') %>
-<h3>Topic #show</h3>
+<h3><%= @topic.title %></h3>
 
-<%= link_to 'Edit this topic', edit_topic_path(@topic) %><br>
+<%= link_to t('view.edit_topic'), edit_topic_path(@topic), class: 'btn btn-primary' %><br>
 
-<%= @topic.title %><br>
-created_by <%= @topic.user.name %>
-<%= @topic.user.email %><br>
-<%= @topic.description %><br>
-<%= @topic.priority %><br>
-<%= @topic.deadline.strftime("%Y-%m-%d") %><br>
-<%= @topic.status %><br>
+<%= t('view.created_by') %>: <%= @topic.user.name %> /
+email: <%= @topic.user.email %><br>
+<%= t('topic.priority') %>: <%= @topic.priority %><br>
+<%= t('topic.deadline') %>: <%= @topic.deadline.strftime("%Y-%m-%d") %><br>
+<%= t('topic.status') %>: <%= @topic.status %><br>
+<%= t('topic.description') %>: <%= @topic.description %><br>
 
 <%# # Render tasks table %>
 <%= render 'topic_contents' %>

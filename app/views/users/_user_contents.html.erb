@@ -1,32 +1,49 @@
 <table>
   <thead>
     <tr>
-      <th>team</th>
-      <th>topic</th>
-      <th>priority</th>
-      <th>deadline</th>
-      <th>status</th>
-      <th>task</th>
-      <th>priority</th>
-      <th>deadline</th>
-      <th>status</th>
+      <th><%= t('team.name') %></th>
+      <th><%= t('topic.title') %></th>
+      <th><%= t('topic.priority') %></th>
+      <th><%= t('topic.deadline') %></th>
+      <th><%= t('topic.status') %></th>
+      <th><%= t('task.title') %></th>
+      <th><%= t('task.priority') %></th>
+      <th><%= t('task.deadline') %></th>
+      <th><%= t('task.status') %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @user.teams.each do |team| %>
       <% team.topics.each do |topic| %>
-    <tr>
-      <td><%= link_to "#{team.name}", team_path(team) %></td>
-      <td><%= link_to "#{topic.title}", topic_path(topic) %></td>
-      <td><%= topic.priority %></td>
-      <td><%= topic.deadline.strftime("%Y-%m-%d") %></td>
-      <td><%= topic.status %></td>
-      <td><%= 'task.title' %></td>
-      <td><%= 'task.priority' %></td>
-      <td><%= 'task.deadline' %></td>
-      <td><%= 'task.status' %></td>
-    </tr>
+      <% if topic.nil? %>
+        <tr>
+        <td><%= link_to "#{team.name}", team_path(team) %></td>
+        </tr>
+
+      <% elsif topic.tasks.blank? %>
+        <tr>
+        <td><%= link_to "#{team.name}", team_path(team) %></td>
+        <td><%= link_to "#{topic.title}", topic_path(topic) %></td>
+        <td><%= topic.priority %></td>
+        <td><%= topic.deadline.strftime("%Y/%m/%d") %></td>
+        <td><%= topic.status %></td>
+        </tr>
+      <% else %>
+        <% topic.tasks.each do |task| %>
+          <tr>
+          <td><%= link_to "#{team.name}", team_path(team) %></td>
+          <td><%= link_to "#{topic.title}", topic_path(topic) %></td>
+          <td><%= topic.priority %></td>
+          <td><%= topic.deadline.strftime("%Y/%m/%d") %></td>
+          <td><%= topic.status %></td>
+          <td><%= task.title %></td>
+          <td><%= task.priority %></td>
+          <td><%= task.deadline.strftime("%Y/%m/%d") %></td>
+          <td><%= task.status %></td>
+          </tr>
+        <% end %>
+      <% end %>
       <% end %>
     <% end %>
   </tbody>

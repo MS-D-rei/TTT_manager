@@ -1,0 +1,53 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      team: チーム
+      topic: トピック
+      task: タスク
+      bookmark: ブックマーク
+    attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+      team:
+        name: チーム名
+      topic:
+        title: トピック名
+        description: 詳細
+        priority: 優先度
+        priorities:
+          high: 高
+          middle: 中
+          low: 低
+        deadline: 期日
+        status: 状況
+        statuses:
+          not_started: 未開始
+          doing: 実行中
+          completed: 完了
+        user_id: ユーザーID
+        team_id: チームID
+      task:
+        title: タスク名
+        description: 詳細
+        priority: 優先度
+        priorities:
+          high: 高
+          middle: 中
+          low: 低
+        deadline: 期日
+        status: 状況
+        statuses:
+          not_started: 未開始
+          doing: 実行中
+          completed: 完了
+        user_id: ユーザーID
+        team_id: チームID
+        topic_id: トピックID
+      comment:
+        content: 内容

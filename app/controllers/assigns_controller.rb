@@ -5,8 +5,10 @@ class AssignsController < ApplicationController
     user_id = params[:assign][:user_id]
     team_id = params[:assign][:team_id]
     # return if a assign already has the team_id and user_id combination
-    return unless Assign.find_by(user_id: user_id, team_id: team_id).nil?
-    # return unless Assign.where(user_id: user_id, team_id: team_id).blank?
+    unless Assign.find_by(user_id: user_id, team_id: team_id).nil?
+      flash[:danger] = 'The user is already a member of this team'
+      return redirect_to team_path(team_id) 
+    end
 
     @assign = Assign.new(assign_params)
     if @assign.save
@@ -14,7 +16,7 @@ class AssignsController < ApplicationController
     else
       flash[:danger] = 'Please select the user who you want to invite'
     end
-    redirect_to team_path(@assign.team_id)
+    redirect_to team_path(team_id)
   end
 
   def destroy

@@ -2,10 +2,10 @@
 <table>
   <thead>
     <tr>
-      <th>task</th>
-      <th>priority</th>
-      <th>deadline</th>
-      <th>status</th>
+      <th><%= t('task.title') %></th>
+      <th><%= t('task.priority') %></th>
+      <th><%= t('task.deadline') %></th>
+      <th><%= t('task.status') %></th>
     </tr>
   </thead>
   
@@ -14,7 +14,7 @@
       <tr>
         <td><%= link_to "#{task.title}", task_path(task) %></td>
         <td><%= task.priority %></td>
-        <td><%= task.deadline.strftime("%Y-%m-%d") %></td>
+        <td><%= task.deadline.strftime("%Y/%m/%d %H:%M") %></td>
         <td><%= task.status %></td>
         <%# # only leader or task creater can delete the task %>
         <% if task.user.name == current_user.name || task.user.name == @topic.team.leader.name %>

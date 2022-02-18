@@ -1,4 +1,3 @@
-<% provide(:button_name, 'create topic') %>
 <h3><%= @team.name %></h3>
 
 <div class='row'>
@@ -7,21 +6,21 @@
     <table>
       <thead>
         <tr>
-          <th>Role</th>
-          <th>Name</th>
+          <th><%= t 'view.role' %></th>
+          <th><%= t 'view.name' %></th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td>Leader:</td>
+          <td><%= t 'view.leader' %>:</td>
           <td><%= @team.leader.name %></td>
         </tr>
         <% @team.assigns.each do |assign| %>
           <%# # skip if leader == assign.user %>
           <% next if assign.user.name == @team.leader.name %>
         <tr>
-          <td>Member:</td>
+          <td><%= t 'view.member' %>:</td>
           <td><%= assign.user.name %></td>
           <td><%= button_to 'Drop', assign_path(assign), { method: :delete, params: { user_id: assign.user.id, team_id: @team.id }, class: 'btn btn-danger' } %></td>
         </tr>
@@ -38,7 +37,7 @@
       <%= f.text_field :name, class: 'form-control' %>
       <%= f.hidden_field :leader_id, value: @team.leader_id %>
 
-      <%= f.submit 'name update', class: 'btn btn-primary' %>
+      <%= f.submit t('view.update_name'), class: 'btn btn-primary' %>
     <% end %>
     </div>
 
@@ -46,10 +45,10 @@
     <div>
     <%= form_with(model: Assign.new, local: true) do |f| %>
 
-      <%= f.select :user_id, User.pluck(:name, :id), include_blank: 'Please select' %>
+      <%= f.select :user_id, User.pluck(:name, :id), include_blank: t('view.please_select') %>
       <%= f.hidden_field :team_id, value: @team.id %>
 
-      <%= f.submit 'invite', class: 'btn btn-primary' %>
+      <%= f.submit t('view.invite'), class: 'btn btn-primary' %>
     <% end %>
     </div>
   </div>
