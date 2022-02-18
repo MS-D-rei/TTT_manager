@@ -205,3 +205,63 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  view:
+    role: ロール
+    name: 名前
+    leader: リーダー
+    member: メンバー
+    create_topic: トピック作成
+    update_name: チーム名更新
+    invite: 招待
+    topic: トピック
+    task: タスク
+    team: チーム
+    log_out: ログアウト
+    please_select: 選択してください
+    created_by: 制作者
+    edit_topic: トピック編集
+    edit_task: タスク編集
+  user:
+    name: ユーザー名
+    email: メールアドレス
+    current_password: 現在のパスワード
+    password: パスワード
+    password_confirmation: 確認用パスワード
+    remember_me: ログインを記憶
+  team:
+    name: チーム名
+  topic:
+    title: トピック名
+    description: 詳細
+    priority: 優先度
+    priorities:
+      high: 高
+      middle: 中
+      low: 低
+    deadline: 期日
+    status: 状況
+    statuses:
+      not_started: 未開始
+      doing: 実行中
+      completed: 完了
+    user_id: ユーザーID
+    team_id: チームID
+  task:
+    title: タスク名
+    description: 詳細
+    priority: 優先度
+    priorities:
+      high: 高
+      middle: 中
+      low: 低
+    deadline: 期日
+    status: 状況
+    statuses:
+      not_started: 未開始
+      doing: 実行中
+      completed: 完了
+    user_id: ユーザーID
+    team_id: チームID
+    topic_id: トピックID
+  comment:
+    content: 内容

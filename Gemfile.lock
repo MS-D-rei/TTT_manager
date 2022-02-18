@@ -99,6 +99,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.1)
+      devise (>= 4.8.0)
     erubi (1.10.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
@@ -297,6 +299,7 @@ DEPENDENCIES
   cancancan
   capybara (>= 2.15)
   devise
+  devise-i18n
   faker
   jbuilder (~> 2.7)
   letter_opener_web
