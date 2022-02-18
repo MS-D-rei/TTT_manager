@@ -35,9 +35,10 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic = Topic.find(params[:id])
+    team_id = @topic.team.id
     @topic.destroy
-    flash[:success] = 'The topic has been deleted'
-    redirect_to root_url
+    flash[:success] = 'Deleted the topic'
+    redirect_to team_path(team_id)
   end
 
   private
