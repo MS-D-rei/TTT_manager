@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[index show]
-  resources :topics
-  resources :teams
+  resources :topics, only: %i[show create edit update destroy]
+  resources :teams, only: %i[index show create edit update destroy]
   resources :assigns, only: %i[create destroy]
-  resources :tasks
+  resources :tasks, only: %i[show create edit update destroy]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

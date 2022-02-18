@@ -2,10 +2,6 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: %i[edit update destroy]
   
-
-  def index
-  end
-  
   def show
     @topic = Topic.includes(tasks: :user).find(params[:id])
   end

@@ -8,6 +8,9 @@
         <li><%= link_to 'Teams', teams_path %></li>
         <li><%= link_to 'Bookmarks', '#' %></li>
         <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+          <% if current_user.try(:admin?) %>
+            <li><%= link_to 'Admin', rails_admin_path %>
+          <% end %>
         <% end %>
       </ul>
     </nav>
