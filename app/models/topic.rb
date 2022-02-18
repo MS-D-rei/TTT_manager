@@ -5,6 +5,7 @@ class Topic < ApplicationRecord
   validates :title, presence: true, length: { maximum: 200 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :priority, presence: true
+  validates :deadline, presence: true
   validates :status, presence: true
 
   enum priority: { high: 0, middle: 1, low: 2 }
