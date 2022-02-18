@@ -1,3 +1,4 @@
+<% provide(:button_name, 'create task') %>
 <h3>Topic #show</h3>
 
 <%= link_to 'Edit this topic', edit_topic_path(@topic) %><br>
@@ -9,5 +10,11 @@ created_by <%= @topic.user.name %>
 <%= @topic.priority %><br>
 <%= @topic.deadline.strftime("%Y-%m-%d") %><br>
 <%= @topic.status %><br>
+
+<%# # Render tasks table %>
+<%= render 'topic_contents' %>
+
+<%# # Render form to create new task %>
+<%= render 'tasks/task_form' %>
 
 <%= button_to 'Delete', topic_path(@topic), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

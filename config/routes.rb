@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :topics
   resources :teams
   resources :assigns, only: %i[create destroy]
+  resources :tasks
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

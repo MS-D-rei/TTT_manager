@@ -1,5 +1,5 @@
 <% provide(:button_name, 'create topic') %>
-<h3>Team #show</h3>
+<h3><%= @team.name %></h3>
 
 <div class='row'>
   <%# # show team leader and members %>
@@ -23,7 +23,7 @@
         <tr>
           <td>Member:</td>
           <td><%= assign.user.name %></td>
-          <td><%= button_to 'Drop', assign_path(assign), method: :delete, params: { user_id: assign.user.id, team_id: @team.id } %></td>
+          <td><%= button_to 'Drop', assign_path(assign), { method: :delete, params: { user_id: assign.user.id, team_id: @team.id }, class: 'btn btn-danger' } %></td>
         </tr>
         <% end %>
       </tbody>

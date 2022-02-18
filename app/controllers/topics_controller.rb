@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   end
   
   def show
-    @topic = Topic.includes(:user).find(params[:id])
+    @topic = Topic.includes(tasks: :user).find(params[:id])
   end
 
   def create

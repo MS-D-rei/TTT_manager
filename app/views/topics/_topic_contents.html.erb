@@ -1,0 +1,27 @@
+<% unless @topic.tasks.blank? %>
+<table>
+  <thead>
+    <tr>
+      <th>task</th>
+      <th>priority</th>
+      <th>deadline</th>
+      <th>status</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @topic.tasks.each do |task| %>
+      <tr>
+        <td><%= link_to "#{task.title}", task_path(task) %></td>
+        <td><%= task.priority %></td>
+        <td><%= task.deadline.strftime("%Y-%m-%d") %></td>
+        <td><%= task.status %></td>
+        <%# # only leader or task creater can delete the task %>
+        <% if task.user.name == current_user.name || task.user.name == @topic.team.leader.name %>
+        <td><%= button_to 'Delete', task_path(task), { method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' } %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
