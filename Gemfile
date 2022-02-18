@@ -8,6 +8,8 @@ gem 'faker'
 gem 'devise'
 gem 'rexml'
 gem 'bcrypt'
+gem 'rails_admin', ['>= 3.0.0.rc', '< 4']
+gem 'cancancan'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
