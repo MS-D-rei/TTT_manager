@@ -1,17 +1,37 @@
+<% provide(:button_name, 'create topic') %>
 <h3>Team #show</h3>
 
 <div class='row'>
+  <%# # show team leader and members %>
   <div class='col-6'>
-    Team name: <%= @team.name %><br>
-    Leader: <%= @team.leader.name %><br>
-    Member:
-    <% @team.assigns.each do |assign| %>
-      <%= assign.user.name %>
-      <%= button_to 'Drop', assign_path(assign), method: :delete, params: { user_id: assign.user.id, team_id: @team.id } %>
-    <% end %>
+    <table>
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Leader:</td>
+          <td><%= @team.leader.name %></td>
+        </tr>
+        <% @team.assigns.each do |assign| %>
+          <%# # skip if leader == assign.user %>
+          <% next if assign.user.name == @team.leader.name %>
+        <tr>
+          <td>Member:</td>
+          <td><%= assign.user.name %></td>
+          <td><%= button_to 'Drop', assign_path(assign), method: :delete, params: { user_id: assign.user.id, team_id: @team.id } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 
   <div class='col-4'>
+    <%# # Form to update team name %>
     <div>
     <%= form_with(model: @team, local: true) do |f| %>
 
@@ -22,6 +42,7 @@
     <% end %>
     </div>
 
+    <%# # Form to invite new member %>
     <div>
     <%= form_with(model: Assign.new, local: true) do |f| %>
 
@@ -34,7 +55,12 @@
   </div>
 </div>
 
-<%= link_to 'create new topic', new_topic_path %><br>
+<%# # render topics and tasks table %>
+<%= render 'team_contents' %>
 
+<%# # render topic form to create new one %>
+<%= render 'topics/form' %>
+
+<%# # disband this team %>
 <%= button_to 'Delete this team', team_path(@team), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 

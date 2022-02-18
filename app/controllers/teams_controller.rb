@@ -1,10 +1,10 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.includes(:leader).all
+    @teams = Team.includes(:leader, :members).all
   end
 
   def show
-    @team = Team.includes(:members).find(params[:id])
+    @team = Team.includes(assigns: :user).find(params[:id])
   end
 
   def create
@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
     if @team.save
       user_id = current_user.id
       team_id = @team.id
+      # create Assign for this new team
       Assign.create(user_id: user_id, team_id: team_id)
       flash[:success] = 'New team has been created'
     else

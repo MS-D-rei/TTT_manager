@@ -10,18 +10,11 @@ class TopicsController < ApplicationController
     @topic = Topic.includes(:user).find(params[:id])
   end
 
-  def new
-    @topic = current_user.topics.new
-  end
-
   def create
     @topic = current_user.topics.build(topic_params)
-    if @topic.save
-      flash[:success] = 'Created a new topic'
-      redirect_to root_url
-    else
-      render :new
-    end
+    team_id = params[:topic][:team_id]
+    flash[:success] = 'Created a new topic' if @topic.save
+    redirect_to team_path(team_id)
   end
 
   def edit
@@ -30,9 +23,10 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
+    team_id = params[:topic][:team_id]
     if @topic.update(topic_params)
       flash[:success] = 'Updated the topic content'
-      redirect_to root_url
+      redirect_to team_path(team_id)
     else
       flash.now[:danger] = 'Please edit again to fulfill the requirements'
       render :edit
@@ -55,6 +49,6 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:topic).permit(:title, :description, :priority, :deadline, :status)
+    params.require(:topic).permit(:title, :description, :priority, :deadline, :status, :team_id)
   end
 end

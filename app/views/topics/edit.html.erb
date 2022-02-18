@@ -1,3 +1,28 @@
 <% provide(:button_name, 'update topic') %>
 
-<%= render 'form' %>
+<div class = 'row'>
+<div class= 'col-7'>
+<%= form_with(model: @topic, local: true) do |f| %>
+<%= render 'devise/shared/error_messages', resource: f.object %>
+
+<%= f.label :title %>
+<%= f.text_field :title %><br>
+
+<%= f.label :description %>
+<%= f.text_field :description %>
+
+<%= f.label :priority %>
+<%= f.select :priority, Topic.priorities.keys.map { |key| [key, key] } %><br>
+
+<%= f.label :deadline %>
+<%= f.datetime_select :deadline %>
+
+<%= f.label :status %>
+<%= f.select :status, Topic.statuses.keys.map { |key| [key, key] } %><br>
+
+<%= f.hidden_field :team_id %>
+
+<%= f.submit yield(:button_name), class: 'btn btn-primary' %>
+<% end %>
+</div>
+</div>

@@ -1,0 +1,33 @@
+<% unless @team.topics.blank? %>
+<table>
+  <thead>
+    <tr>
+      <th>topic</th>
+      <th>priority</th>
+      <th>deadline</th>
+      <th>status</th>
+      <th>task</th>
+      <th>priority</th>
+      <th>deadline</th>
+      <th>status</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @team.topics.each do |topic| %>
+      <%# <%= topic.tasks.each do |task| %>
+      <tr>
+        <td><%= link_to "#{topic.title}", topic_path(topic) %></td>
+        <td><%= topic.priority %></td>
+        <td><%= topic.deadline %></td>
+        <td><%= topic.status %></td>
+        <td>task.title</td>
+        <td>task.priority</td>
+        <td>task.deadline</td>
+        <td>task.status</td>
+      </tr>
+      <%# <% end %>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

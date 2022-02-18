@@ -10,8 +10,8 @@
   <thead>
     <tr>
       <th>Team.name</th>
-      <th>leader name</th>
-      <th>users.name</th>
+      <th>Leader</th>
+      <th>Members</th>
     </tr>
   </thead>
 
@@ -21,9 +21,10 @@
       <td><%= link_to "#{team.name}", team_path(team) %>
       <td><%= team.leader.name %></td>
       <td>
-      <%# <%= team.users.each do |user| %>
-      <%# <%= user.name %> %>
-      <%# <% end %> %> %>
+      <% team.members.each do |user| %>
+      <% next if user.name == team.leader.name %>
+      <%= user.name %><br>
+      <% end %>
       </td>
     </tr>
     <% end %>
