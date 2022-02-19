@@ -1,29 +1,40 @@
-<h2><%= t('devise.sessions.new.sign_in') %></h2>
-
-<%# <% # form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<%= form_with(url: user_session_path, scope: :user, local: true) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class='row login-page'>
+  <div class='col-7'>
+    <h2>TTT Manager</h2>
+    <h4>概要</h4>
+    <p>やることをTeam, Topic, Taskの3つの階層構造で管理するアプリです。</p>
+    <h4>機能</h4>
+    <p>1. ログイン後のユーザーページで関わりのある全情報を表示。タスクタイトルやタスクの優先度で検索できます</p>
+    <p>2. 検索後の表示結果ではタスクの優先度・期日・状況・作成日でソートできます</p>
+    <p>3. タスクにブックマークをつけ、Bookmarksページにて一覧表示できます</p>
+    <p>4. Usersページからユーザー名をクリックすることでそのユーザーの関わっているタスクをみることができます</p>
   </div>
+  <div class='col-3'>
+    <%# <% # form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_with(url: user_session_path, scope: :user, local: true) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
 
-  <% if devise_mapping.rememberable? %>
+    <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="actions">
-    <%= f.submit t('devise.sessions.new.sign_in') %>
+    <div class="actions">
+      <%= f.submit t('devise.sessions.new.sign_in') %>
+    </div>
+    <% end %>
+
+  <%= button_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+
+  <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= button_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
-
-<%= render "devise/shared/links" %>

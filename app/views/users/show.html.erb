@@ -12,7 +12,10 @@
 </div>
 
 <%# # task title search %>
+<%# # 他社の検索が実装できたら変更する %>
+<% if @user == current_user %>
 <%= render 'search_task' %>
+<% end %>
 
 <div class='row'>
   <div class='col'>
