@@ -6,7 +6,7 @@ User.create!(
   admin: true
 )
 
-20.times do |n|
+10.times do |n|
   name = Faker::Name.name
   email = "test-#{n + 1}@mail.com"
   password = 'password'
@@ -32,11 +32,11 @@ Assign.create!(
   team_id: 1
 )
 
-30.times do
-  user_id = rand(1..20)
+20.times do
+  user_id = rand(1..10)
   team_id = rand(1..5)
   while Assign.find_by(user_id: user_id, team_id: team_id)
-    user_id = rand(1..20)
+    user_id = rand(1..10)
     team_id = rand(1..5)
   end
   Assign.create!(
@@ -46,7 +46,7 @@ Assign.create!(
 end
 
 # topics and tasks creation
-users = User.order(:created_at).take(7)
+users = User.all
 3.times do |n|
   topic_title = Faker::Lorem.sentence(word_count: 2)
   topic_description = Faker::Lorem.sentence(word_count: 50)
