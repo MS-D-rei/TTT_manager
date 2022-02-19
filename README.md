@@ -10,7 +10,7 @@
 - devise
 
 ## カリキュラム外の技術
-- redcarpet
+- ransack
 
 ## 実行手順
 ```
