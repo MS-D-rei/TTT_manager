@@ -24,4 +24,13 @@ class User < ApplicationRecord
   def bookmark?(task)
     bookmarked_tasks.include?(task)
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@mail.com') do |user|
+      user.name = 'ゲストユーザー'
+      user.email = 'guest@mail.com'
+      user.password = SecureRandom.urlsafe_base64
+      user.admin = true
+    end
+  end
 end

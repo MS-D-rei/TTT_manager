@@ -20,7 +20,6 @@ class Users::SessionsController < Devise::SessionsController
   #   respond_with resource, location: after_sign_in_path_for(resource)
   # end
 
-  # will change this method
   def create
     @user = User.find_by(email: params[:user][:email].downcase)
     if @user&.valid_password?(params[:user][:password])
@@ -35,6 +34,13 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    flash[:success] = 'ゲストユーザーとしてログインしました'
+    redirect_to root_path
+  end
 
   # protected
 

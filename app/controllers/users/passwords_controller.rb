@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  before_action :not_guest_user, only: :create
   # GET /resource/password/new
   # def new
   #   super
@@ -20,6 +21,13 @@ class Users::PasswordsController < Devise::PasswordsController
   # def update
   #   super
   # end
+
+  def not_guest_user
+    return unless params[:user][:email].downcase == 'guest@mail.com'
+
+    flash[:danger] = 'ゲストユーザーのパスワードは再設定できません'
+    redirect_to new_user_session_path
+  end
 
   # protected
 
