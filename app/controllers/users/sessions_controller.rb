@@ -25,11 +25,10 @@ class Users::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email].downcase)
     if @user&.valid_password?(params[:user][:password])
       sign_in @user
-      redirect_to root_url
     else
-      flash.now[:danger] = 'Invalid email/password combination.'
-      render :new
+      flash[:danger] = 'Invalid email/password combination.'
     end
+    redirect_to root_url
   end
 
   # DELETE /resource/sign_out
