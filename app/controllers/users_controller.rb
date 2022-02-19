@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    return @user = User.includes(teams: :topics).find(current_user.id) if params[:id].nil?
+    return @user = User.includes(teams: { topics: :tasks }).find(current_user.id) if params[:id].nil?
 
-    @user = User.includes(teams: :topics).find(params[:id])
+    @user = User.includes(teams: { topics: :tasks }).find(params[:id])
   end
 
   private

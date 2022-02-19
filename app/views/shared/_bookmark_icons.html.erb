@@ -1,0 +1,13 @@
+<% if current_user.bookmark?(task) %>
+<td>
+  <% button_to bookmark_path(current_user.bookmarks.find_by(task_id: task.id)), { method: :delete, params: { task_id: task.id } } do %>
+  <i class="fa-solid fa-square-check"></i>
+  <% end %>
+</td>
+<% else %>
+<td>
+  <%= button_to bookmarks_path(task_id: task.id) do %>
+  <i class="fa-solid fa-square"></i>
+  <% end %>
+</td>
+<% end %>

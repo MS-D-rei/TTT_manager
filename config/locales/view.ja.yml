@@ -15,6 +15,7 @@ ja:
     created_by: 制作者
     edit_topic: トピック編集
     edit_task: タスク編集
+    bookmark: ブックマーク
   user:
     name: ユーザー名
     email: メールアドレス
