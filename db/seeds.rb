@@ -82,3 +82,17 @@ users = User.all
     end
   end
 end
+
+# Bookmark creation
+10.times do
+  user_id = rand(1..2)
+  task_id = rand(1..20)
+  while Bookmark.find_by(user_id: user_id, task_id: task_id)
+    user_id = rand(1..2)
+    task_id = rand(1..20)
+  end
+  Bookmark.create!(
+    user_id: user_id,
+    task_id: task_id
+  )
+end
