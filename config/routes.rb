@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :teams, only: %i[index show create edit update destroy]
   resources :assigns, only: %i[create destroy]
   resources :tasks, only: %i[show create edit update destroy]
+  resources :bookmarks, only: %i[index create destroy]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
