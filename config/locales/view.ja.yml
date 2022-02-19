@@ -1,5 +1,6 @@
 ja:
   view:
+    all_tasks: 全てのタスク
     role: ロール
     name: 名前
     leader: リーダー
@@ -16,6 +17,8 @@ ja:
     edit_topic: トピック編集
     edit_task: タスク編集
     bookmark: ブックマーク
+    belong_to: 所属
+    bookmarked_tasks: ブックマークタスク
   user:
     name: ユーザー名
     email: メールアドレス

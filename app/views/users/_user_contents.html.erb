@@ -38,7 +38,7 @@
           <td><%= topic.priority %></td>
           <td><%= topic.deadline.strftime("%Y/%m/%d") %></td>
           <td><%= topic.status %></td>
-          <td><%= task.title %></td>
+          <td><%= link_to "#{task.title}", task_path(task) %></td>
           <td><%= task.priority %></td>
           <td><%= task.deadline.strftime("%Y/%m/%d") %></td>
           <td><%= task.status %></td>

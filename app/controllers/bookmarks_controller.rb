@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @bookmarks = current_user.bookmarks.includes(:task).all
+    @bookmarked_tasks = current_user.bookmarked_tasks
   end
 
   def create

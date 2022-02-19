@@ -3,12 +3,21 @@
 
 <%= link_to t('view.edit_topic'), edit_topic_path(@topic), class: 'btn btn-primary' %><br>
 
-<%= t('view.created_by') %>: <%= @topic.user.name %> /
-email: <%= @topic.user.email %><br>
-<%= t('topic.priority') %>: <%= @topic.priority %><br>
-<%= t('topic.deadline') %>: <%= @topic.deadline.strftime("%Y-%m-%d") %><br>
-<%= t('topic.status') %>: <%= @topic.status %><br>
+<div class='row'>
+  <div class='col-5'>
+    <%= t('view.created_by') %>: <%= @topic.user.name %> / email: <%= @topic.user.email %><br>
+    <%= t('view.belong_to') %>: <%= link_to "#{@topic.team.name}", team_path(@topic.team) %><br>
+    <%= t('topic.priority') %>: <%= @topic.priority %><br>
+    <%= t('topic.deadline') %>: <%= @topic.deadline.strftime("%Y-%m-%d") %><br>
+    <%= t('topic.status') %>: <%= @topic.status %><br>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-8'>
 <%= t('topic.description') %>: <%= @topic.description %><br>
+  </div>
+</div>
 
 <%# # Render tasks table %>
 <%= render 'topic_contents' %>

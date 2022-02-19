@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<h2>test</h2>
+<h2><%= t('view.all_tasks') %></h2>
 
 <%= link_to t('view.log_out'), destroy_user_session_path, method: :delete %><br>
 

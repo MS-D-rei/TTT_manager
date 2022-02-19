@@ -3,13 +3,18 @@
 <%= link_to t('view.edit_task'), edit_task_path(@task), class: 'btn btn-primary' %>
 
 <div class='row'>
+  <div class='col-5'>
   <%= t('view.created_by') %>: <%= @task.user.name %> /
   email: <%= @task.user.email %><br>
+  <%= t('view.belong_to') %>: <%= link_to "#{@task.topic.title}", topic_path(@task.topic) %><br>
   <%= t('task.priority') %>: <%= @task.priority %><br>
   <%= t('task.deadline') %>: <%= @task.deadline.strftime("%Y/%m/%d %H:%M") %><br>
   <%= t('task.status') %>: <%= @task.status %><br>
+  </div>
 </div>
 
 <div class='row'>
+  <div class='col-8'>
   <%= t('task.description') %>: <%= @task.description %><br>
+  </div>
 </div>
