@@ -1,6 +1,8 @@
 <% provide(:button_name, 'create task') %>
 <h3><%= @topic.title %></h3>
 
+<%= t('view.login_user') %>: <%= current_user.name %><br>
+
 <%= link_to t('view.edit_topic'), edit_topic_path(@topic), class: 'btn btn-primary' %><br>
 
 <div class='row'>

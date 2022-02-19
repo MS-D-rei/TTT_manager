@@ -10,6 +10,7 @@
       <th><%= t('task.priority') %></th>
       <th><%= t('task.deadline') %></th>
       <th><%= t('task.status') %></th>
+      <th><%= t('task.created_at') %></th>
       <th><%= t('view.bookmark') %></th>
     </tr>
   </thead>
@@ -28,12 +29,13 @@
         <tr>
           <td><%= link_to "#{topic.title}", topic_path(topic) %></td>
           <td><%= topic.priority %></td>
-          <td><%= topic.deadline.strftime("%Y-%m-%d-%H") %></td>
+          <td><%= topic.deadline.strftime("%Y/%m/%d %H:%M") %></td>
           <td><%= topic.status %></td>
           <td><%= link_to "#{task.title}", task_path(task) %></td>
           <td><%= task.priority %></td>
-          <td><%= task.deadline.strftime("%Y-%m-%d-%H") %></td>
+          <td><%= task.deadline.strftime("%Y/%m/%d %H:%M") %></td>
           <td><%= task.status %></td>
+          <td><%= task.created_at.strftime("%Y/%m/%d") %></td>
           <% if current_user.bookmark?(task) %>
             <td>
             <%= button_to bookmark_path(current_user.bookmarks.find_by(task_id: task.id)), { method: :delete } do %>
@@ -46,6 +48,10 @@
               <i class="fa-solid fa-square"></i>
             <% end %>
             </td>
+          <% end %>
+          <%# # Leader or topic maker can delete the topic %>
+          <% if current_user == topic.user || current_user == @team.leader %>
+            <td><%= button_to 'Delete', task_path(task), { method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' } %>
           <% end %>
         </tr>
         <% end %>

@@ -1,5 +1,7 @@
 <h3><%= @team.name %></h3>
 
+<%= t('view.login_user') %>: <%= current_user.name %><br>
+
 <div class='row'>
   <%# # show team leader and members %>
   <div class='col-6'>
@@ -22,7 +24,11 @@
         <tr>
           <td><%= t 'view.member' %>:</td>
           <td><%= assign.user.name %></td>
+          
+          <%# # Drop button. Leader can push it %>
+          <% if current_user == @team.leader %>
           <td><%= button_to 'Drop', assign_path(assign), { method: :delete, params: { user_id: assign.user.id, team_id: @team.id }, class: 'btn btn-danger' } %></td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
@@ -30,6 +36,8 @@
   </div>
 
   <div class='col-4'>
+    <%# # only leader can change team name and invite members %>
+    <% if current_user == @team.leader %>
     <%# # Form to update team name %>
     <div>
     <%= form_with(model: @team, local: true) do |f| %>
@@ -51,6 +59,7 @@
       <%= f.submit t('view.invite'), class: 'btn btn-primary' %>
     <% end %>
     </div>
+    <% end %>
   </div>
 </div>
 

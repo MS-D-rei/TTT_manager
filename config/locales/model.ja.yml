@@ -49,5 +49,6 @@ ja:
         user_id: ユーザーID
         team_id: チームID
         topic_id: トピックID
+        created_at: 作成日
       comment:
         content: 内容

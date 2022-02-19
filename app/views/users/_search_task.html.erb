@@ -1,5 +1,9 @@
 <%= search_form_for @q, url: search_users_path do |f| %>
   <%= f.label :title_cont %>
   <%= f.search_field :title_cont %>
+  <%= f.label :priority %>
+  <%= f.radio_button :priority_eq, 0 %>high
+  <%= f.radio_button :priority_eq, 1 %>middle
+  <%= f.radio_button :priority_eq, 2 %>low
   <%= f.submit t('view.search') %>
 <% end %>

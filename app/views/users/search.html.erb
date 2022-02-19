@@ -12,9 +12,10 @@
       <th><%= t('topic.deadline') %></th>
       <th><%= t('topic.status') %></th>
       <th><%= t('task.title') %></th>
-      <th><%= t('task.priority') %></th>
-      <th><%= t('task.deadline') %></th>
-      <th><%= t('task.status') %></th>
+      <th><%= sort_link(@q, :priority, t('task.priority')) %></th>
+      <th><%= sort_link(@q, :deadline, t('task.deadline')) %></th>
+      <th><%= sort_link(@q, :status, t('task.status')) %></th>
+      <th><%= sort_link(@q, :created_at, t('task.created_at')) %></th>
       <th><%= t('view.bookmark') %></th>
     </tr>
   </thead>
@@ -33,6 +34,7 @@
         <td><%= task.priority %></td>
         <td><%= task.deadline.strftime("%Y/%m/%d") %></td>
         <td><%= task.status %></td>
+        <td><%= task.created_at.strftime("%Y/%m/%d") %></td>
         <% if current_user.bookmark?(task) %>
             <td>
               <%= button_to bookmark_path(current_user.bookmarks.find_by(task_id: task.id)), { method: :delete } do %>

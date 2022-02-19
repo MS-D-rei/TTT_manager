@@ -1,6 +1,10 @@
 ja:
   view:
     all_tasks: 全てのタスク
+    edit_profile: アカウント編集
+    admin: 管理者画面
+    login_user: ログインユーザー
+    task_keeper: 以下のユーザーのタスクを表示中
     role: ロール
     name: 名前
     leader: リーダー
@@ -62,5 +66,6 @@ ja:
     user_id: ユーザーID
     team_id: チームID
     topic_id: トピックID
+    created_at: 作成日
   comment:
     content: 内容
