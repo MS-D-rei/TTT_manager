@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @teams = Team.includes(:leader, :members).all
   end
@@ -14,9 +16,9 @@ class TeamsController < ApplicationController
       team_id = @team.id
       # create Assign for this new team
       Assign.create(user_id: user_id, team_id: team_id)
-      flash[:success] = 'New team has been created'
+      flash[:success] = I18n.t('view.messages.create_team')
     else
-      flash[:danger] = 'Please input team name'
+      flash[:danger] = I18n.t('view.messages.failed_save_team')
     end
     redirect_to teams_path
   end
@@ -24,17 +26,21 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     if @team.update(team_params)
-      flash[:success] = 'Team name has been updated'
+      flash[:success] = I18n.t('view.messages.update_team')
     else
-      flash[:danger] = 'Please input team name'
+      flash[:danger] = I18n.t('view.messages.failed_update_team')
     end
     redirect_to teams_path
   end
 
   def destroy
     @team = Team.find(params[:id])
-    @team.destroy
-    flash[:success] = 'The team has been disbanded'
+    if @team.topics.blank?
+      @team.destroy
+      flash[:success] = I18n.t('view.messages.delete_team')
+    else
+      flash[:danger] = I18n.t('view.messages.failed_delete_team')
+    end
     redirect_to teams_path
   end
 

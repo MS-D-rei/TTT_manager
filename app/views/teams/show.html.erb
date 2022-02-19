@@ -36,29 +36,33 @@
   </div>
 
   <div class='col-4'>
-    <%# # only leader can change team name and invite members %>
+    <%# # only leader can change team name, invite members, and disband team %>
     <% if current_user == @team.leader %>
-    <%# # Form to update team name %>
-    <div>
-    <%= form_with(model: @team, local: true) do |f| %>
+      <%# # Form to update team name %>
+      <div>
+      <%= form_with(model: @team, local: true) do |f| %>
 
-      <%= f.text_field :name, class: 'form-control' %>
-      <%= f.hidden_field :leader_id, value: @team.leader_id %>
+        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.hidden_field :leader_id, value: @team.leader_id %>
 
-      <%= f.submit t('view.update_name'), class: 'btn btn-primary' %>
-    <% end %>
-    </div>
+        <%= f.submit t('view.update_name'), class: 'btn btn-primary' %>
+      <% end %>
+      </div>
 
-    <%# # Form to invite new member %>
-    <div>
-    <%= form_with(model: Assign.new, local: true) do |f| %>
+      <%# # Form to invite new member %>
+      <div>
+      <%= form_with(model: Assign.new, local: true) do |f| %>
 
-      <%= f.select :user_id, User.pluck(:name, :id), include_blank: t('view.please_select') %>
-      <%= f.hidden_field :team_id, value: @team.id %>
+        <%= f.select :user_id, User.pluck(:name, :id), include_blank: t('view.please_select') %>
+        <%= f.hidden_field :team_id, value: @team.id %>
 
-      <%= f.submit t('view.invite'), class: 'btn btn-primary' %>
-    <% end %>
-    </div>
+        <%= f.submit t('view.invite'), class: 'btn btn-primary' %>
+      <% end %>
+
+      <%# # Button to disband this team %>
+      <%# # can delete when this team has no topic %>
+      <%= button_to t('view.delete_team'), team_path(@team), method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger' %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -68,7 +72,3 @@
 
 <%# # render topic form to create new one %>
 <%= render 'topics/form' %>
-
-<%# # disband this team %>
-<%= button_to 'Delete this team', team_path(@team), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-

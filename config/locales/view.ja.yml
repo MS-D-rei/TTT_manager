@@ -7,6 +7,7 @@ ja:
     task_keeper: 以下のユーザーのタスクを表示中
     role: ロール
     name: 名前
+    delete_team: 解散
     leader: リーダー
     member: メンバー
     create_topic: トピック作成
@@ -20,10 +21,29 @@ ja:
     created_by: 制作者
     edit_topic: トピック編集
     edit_task: タスク編集
+    create_task: タスク作成
+    delete: 削除
     bookmark: ブックマーク
     belong_to: 所属
     bookmarked_tasks: ブックマークタスク
     search: 検索
+    messages:
+      create_team: チームを作成しました
+      failed_save_team: チームの作成に失敗しました
+      update_team: チーム名を変更しました
+      failed_update_team: チーム名の更新に失敗しました
+      invite: チームに加入しました
+      delete_team: チームを解散しました
+      failed_delete_team: トピックのあるチームは解散できません
+      create_topic: トピックを作成しました
+      failed_create_topic: トピックの作成に失敗しました
+      update_topic: トピックを更新しました
+      failed_update_topic: トピックの更新に失敗しました
+      delete_topic: トピックを削除しました
+      failed_delete_topic: リーダーかトピックの作成者のみ削除できます
+      create_task: タスクを作成しました
+      update_task: タスクを更新しました
+      delete_task: タスクを削除しました
   user:
     name: ユーザー名
     email: メールアドレス
