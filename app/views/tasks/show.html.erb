@@ -19,3 +19,7 @@
   <%= t('task.description') %>: <%= @task.description %><br>
   </div>
 </div>
+
+<% if current_user == @task.user || current_user == @task.team.leader %>
+  <td><%= button_to t('view.delete'), task_path(@task), { method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger' } %>
+<% end %>
