@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       team: チーム
+      assign: アサイン
       topic: トピック
       task: タスク
       bookmark: ブックマーク
@@ -50,5 +51,3 @@ ja:
         team_id: チームID
         topic_id: トピックID
         created_at: 作成日
-      comment:
-        content: 内容

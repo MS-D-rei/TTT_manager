@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
+    background-color: white;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
@@ -51,14 +51,21 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+  .error {
+    padding-top: 16%;
+  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/500.html -->
+  <div class="error">
+    <img src="/500.png">
+  </div>
   <div class="dialog">
     <div>
       <h1>We're sorry, but something went wrong.</h1>
+      <p>Internal Server Error</p>
     </div>
     <p>If you are the application owner check the logs for more information.</p>
   </div>
