@@ -12,11 +12,19 @@ Rails.application.routes.draw do
     root 'users#show' # creates user_root_path
   end
 
-  resources :users, only: %i[index show]
+  resources :users, only: %i[index show] do
+    collection do
+      get 'search'
+    end
+  end
   resources :topics, only: %i[show create edit update destroy]
   resources :teams, only: %i[index show create edit update destroy]
   resources :assigns, only: %i[create destroy]
-  resources :tasks, only: %i[show create edit update destroy]
+  resources :tasks, only: %i[show create edit update destroy] do
+    collection do
+      get 'search'
+    end
+  end
   resources :bookmarks, only: %i[index create destroy]
 
   if Rails.env.development?

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: %i[show]
   before_action :logged_in_user, only: %i[show]
+  before_action :set_q, only: %i[show search]
 
   def index
     @users = User.all
@@ -12,6 +13,10 @@ class UsersController < ApplicationController
     @user = User.includes(teams: { topics: :tasks }).find(params[:id])
   end
 
+  def search
+    @results = @q.result.includes(topic: :team)
+  end
+
   private
 
   def logged_in_user
@@ -19,5 +24,9 @@ class UsersController < ApplicationController
 
     # flash[:danger] = 'Please log in'
     redirect_to new_user_session_path
+  end
+
+  def set_q
+    @q = current_user.tasks.ransack(params[:q])
   end
 end

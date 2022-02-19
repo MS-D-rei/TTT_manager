@@ -19,6 +19,7 @@ ja:
     bookmark: ブックマーク
     belong_to: 所属
     bookmarked_tasks: ブックマークタスク
+    search: 検索
   user:
     name: ユーザー名
     email: メールアドレス
