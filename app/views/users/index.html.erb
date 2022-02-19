@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
 
-<%= user.name %><br>
+<%= link_to "#{user.name}", user_path(user) %><br>
 <%= user.email %><br>
 
 <% end %>

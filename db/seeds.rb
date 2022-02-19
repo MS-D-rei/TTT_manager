@@ -1,7 +1,84 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# users creation
+User.create!(
+  name: 'Test Name',
+  email: 'test@mail.com',
+  password: 'password',
+  admin: true
+)
+
+30.times do |n|
+  name = Faker::Name.name
+  email = "test-#{n + 1}@mail.com"
+  password = 'password'
+  User.create!(
+    name: name,
+    email: email,
+    password: password
+  )
+end
+
+# teams creation
+7.times do
+  name = Faker::Lorem.sentence(word_count: 1)
+  Team.create!(
+    name: name,
+    leader_id: rand(1..7)
+  )
+end
+
+# assigns creation
+Assign.create!(
+  user_id: 1,
+  team_id: 1
+)
+
+50.times do
+  user_id = rand(1..30)
+  team_id = rand(1..7)
+  while Assign.find_by(user_id: user_id, team_id: team_id)
+    user_id = rand(1..30)
+    team_id = rand(1..7)
+  end
+  Assign.create!(
+    user_id: user_id,
+    team_id: team_id
+  )
+end
+
+# topics and tasks creation
+users = User.order(:created_at).take(7)
+10.times do |n|
+  topic_title = Faker::Lorem.sentence(word_count: 2)
+  topic_description = Faker::Lorem.sentence(word_count: 50)
+  topic_priority = rand(0..2)
+  topic_deadline = Time.zone.now + 60 * 60 * 24 * (n + 1)
+  topic_status = rand(0..2)
+  team_id = rand(1..7)
+  users.each do |user|
+    topic = user.topics.create!(
+      title: topic_title,
+      description: topic_description,
+      priority: topic_priority,
+      deadline: topic_deadline,
+      status: topic_status,
+      team_id: team_id
+    )
+    topic_id = topic.id
+    10.times do
+      task_title = Faker::Lorem.sentence(word_count: 2)
+      task_description = Faker::Lorem.sentence(word_count: 50)
+      task_priority = rand(0..2)
+      task_deadline = Time.zone.now + 60 * 60 * 24 * (n + 1)
+      task_status = topic_status
+      user.tasks.create!(
+        title: task_title,
+        description: task_description,
+        priority: task_priority,
+        deadline: task_deadline,
+        status: task_status,
+        team_id: team_id,
+        topic_id: topic_id
+      )
+    end
+  end
+end
