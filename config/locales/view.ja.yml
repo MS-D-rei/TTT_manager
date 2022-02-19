@@ -42,8 +42,11 @@ ja:
       delete_topic: トピックを削除しました
       failed_delete_topic: リーダーかトピックの作成者のみ削除できます
       create_task: タスクを作成しました
+      failed_create_task: タスク名と詳細を記入してください
       update_task: タスクを更新しました
+      failed_update_task: タスク名と詳細を記入してください
       delete_task: タスクを削除しました
+      failed_delete_task: リーダーかタスクの作成者のみ削除できます
   user:
     name: ユーザー名
     email: メールアドレス

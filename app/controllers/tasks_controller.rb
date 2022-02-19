@@ -9,9 +9,9 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build(task_params)
     topic_id = params[:task][:topic_id]
     if @task.save
-      flash[:success] = 'Created new task'
+      flash[:success] = I18n.t('view.messages.create_task')
     else
-      flash[:danger] = 'Please input task title and description'
+      flash[:danger] = I18n.t('view.messages.failed_create_task')
     end
     redirect_to topic_path(topic_id)
   end
@@ -24,18 +24,23 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     topic_id = params[:task][:topic_id]
     if @task.update(task_params)
-      flash[:success] = 'Updated the task'
+      flash[:success] = I18n.t('view.messages.update_task')
       redirect_to topic_path(topic_id)
     else
-      render :edit
+      flash[:danger] = I18n.t('view.messages.failed_update_task')
+      redirect_to edit_task_path(@task)
     end
   end
 
   def destroy
     @task = Task.find(params[:id])
     topic_id = @task.topic.id
-    @task.destroy
-    flash[:success] = 'Deleted the topic'
+    if current_user == task.user || current_user == @task.team.leader
+      @task.destroy
+      flash[:success] = I18n.t('view.messages.delete_task')
+    else
+      flash[:danger] = I18n.t('view.messages.failed_delete_task')
+    end
     redirect_to topic_path(topic_id)
   end
 
