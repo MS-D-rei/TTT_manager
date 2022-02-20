@@ -27,10 +27,19 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'guest@mail.com') do |user|
-      user.name = 'ゲストユーザー'
+      user.name = 'ゲストアドミンユーザー'
       user.email = 'guest@mail.com'
       user.password = SecureRandom.urlsafe_base64
       user.admin = true
+    end
+  end
+
+  def self.guest_as_normal
+    find_or_create_by!(email: 'normal_guest@mail.com') do |user|
+      user.name = 'ゲストノーマルユーザー'
+      user.email = 'normal_guest@mail.com'
+      user.password = SecureRandom.urlsafe_base64
+      user.admin = false
     end
   end
 end

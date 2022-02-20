@@ -38,7 +38,14 @@ class Users::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    flash[:success] = 'ゲストユーザーとしてログインしました'
+    flash[:success] = 'ゲストアドミンユーザーとしてログインしました'
+    redirect_to root_path
+  end
+
+  def guest_sign_in_as_normal
+    user = User.guest_as_normal
+    sign_in user
+    flash[:success] = 'ゲストノーマルユーザーとしてログインしました'
     redirect_to root_path
   end
 
