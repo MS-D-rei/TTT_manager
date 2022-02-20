@@ -34,7 +34,8 @@
     </div>
     <% end %>
 
-  <%= button_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+  <%= button_to 'ゲストアドミンログイン', users_guest_sign_in_path, method: :post %>
+  <%= button_to 'ゲスト一般ログイン', users_guest_sign_in_as_normal_path, method: :post %>
 
   <%= render "devise/shared/links" %>
   </div>

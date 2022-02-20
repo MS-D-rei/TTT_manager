@@ -45,7 +45,7 @@ class Users::SessionsController < Devise::SessionsController
   def guest_sign_in_as_normal
     user = User.guest_as_normal
     sign_in user
-    flash[:success] = 'ゲストノーマルユーザーとしてログインしました'
+    flash[:success] = 'ゲスト一般ユーザーとしてログインしました'
     redirect_to root_path
   end
 
