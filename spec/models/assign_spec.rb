@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Assign, type: :model do
   let!(:first_user) { FactoryBot.create(:user) }
-  let!(:second_user) { FactoryBot.create(:user, name: 'Secound User', email: 'second@mail.com') }
   let!(:first_team) { FactoryBot.create(:team, leader_id: first_user.id) }
 
   describe '#validate' do
