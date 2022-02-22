@@ -79,5 +79,26 @@ RSpec.describe Task, type: :model do
         expect(no_status_task.save).to be_falsy
       end
     end
+
+    context 'when no user_id' do
+      let!(:no_user_id_task) { build(:task, team_id: team.id, topic_id: topic.id) }
+      it 'should be false' do
+        expect(no_user_id_task.save).to be_falsy
+      end
+    end
+
+    context 'when no team_id' do
+      let!(:no_team_id_task) { build(:task, user_id: user.id, topic_id: topic.id) }
+      it 'should be false' do
+        expect(no_team_id_task.save).to be_falsy
+      end
+    end
+
+    context 'when no topic_id' do
+      let!(:no_topic_id_task) { build(:task, user_id: user.id, team_id: team.id) }
+      it 'should be false' do
+        expect(no_topic_id_task.save).to be_falsy
+      end
+    end
   end
 end
