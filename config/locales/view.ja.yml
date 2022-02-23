@@ -5,6 +5,7 @@ ja:
     admin: 管理者画面
     login_user: ログインユーザー
     task_keeper: 以下のユーザーのタスクを表示中
+    users: ユーザー一覧
     role: ロール
     name: 名前
     delete_team: 解散
@@ -16,6 +17,8 @@ ja:
     topic: トピック
     task: タスク
     team: チーム
+    teams: チーム一覧
+    create_team: チーム作成
     log_out: ログアウト
     please_select: 選択してください
     created_by: 制作者
@@ -24,6 +27,7 @@ ja:
     create_task: タスク作成
     delete: 削除
     bookmark: ブックマーク
+    bookmarks: ブックマーク一覧
     belong_to: 所属
     bookmarked_tasks: ブックマークタスク
     search: 検索

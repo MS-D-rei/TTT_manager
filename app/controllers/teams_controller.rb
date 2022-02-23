@@ -38,10 +38,11 @@ class TeamsController < ApplicationController
     if @team.topics.blank?
       @team.destroy
       flash[:success] = I18n.t('view.messages.delete_team')
+      redirect_to teams_path
     else
       flash[:danger] = I18n.t('view.messages.failed_delete_team')
+      redirect_to request.referer
     end
-    redirect_to teams_path
   end
 
   private
