@@ -27,7 +27,7 @@
           
           <%# # Drop button. Leader can push it %>
           <% if current_user == @team.leader %>
-          <td><%= button_to 'Drop', assign_path(assign), { method: :delete, params: { user_id: assign.user.id, team_id: @team.id }, class: 'btn btn-danger' } %></td>
+          <td><%= button_to t('view.drop'), assign_path(assign), { method: :delete, params: { user_id: assign.user.id, team_id: @team.id }, class: 'btn btn-danger' } %></td>
           <% end %>
         </tr>
         <% end %>

@@ -20,6 +20,7 @@ ja:
     teams: チーム一覧
     create_team: チーム作成
     log_out: ログアウト
+    drop: 離脱
     please_select: 選択してください
     created_by: 制作者
     edit_topic: トピック編集
@@ -39,6 +40,10 @@ ja:
       invite: チームに加入しました
       delete_team: チームを解散しました
       failed_delete_team: トピックのあるチームは解散できません
+      create_assign: メンバーが加入しました
+      failed_create_assign: 招待するメンバーを選択してください
+      delete_assign: メンバーがチームから離れました
+      failed_delete_assign: メンバーの離脱に失敗しました。そのメンバーは所属していません
       create_topic: トピックを作成しました
       failed_create_topic: トピックの作成に失敗しました
       update_topic: トピックを更新しました

@@ -12,9 +12,9 @@ class AssignsController < ApplicationController
 
     @assign = Assign.new(assign_params)
     if @assign.save
-      flash[:success] = 'New member joined this team'
+      flash[:success] = I18n.t('view.messages.create_assign')
     else
-      flash[:danger] = 'Please select the user who you want to invite'
+      flash[:danger] = I18n.t('view.messages.failed_create_assign')
     end
     redirect_to team_path(team_id)
   end
@@ -25,9 +25,9 @@ class AssignsController < ApplicationController
     @assign = Assign.find_by(user_id: user_id, team_id: team_id)
     if @assign
       @assign.destroy
-      flash[:info] = 'The member depart from this team'
+      flash[:info] = I18n.t('view.messages.delete_assign')
     else
-      flash[:danger] = 'The member is not assigned to this team'
+      flash[:danger] = I18n.t('view.messages.faild_delete_assign')
     end
     redirect_to team_path(team_id)
   end
