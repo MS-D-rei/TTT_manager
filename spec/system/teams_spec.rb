@@ -26,7 +26,7 @@ RSpec.describe 'Teams', type: :system do
     end
   end
 
-  xdescribe '#update' do
+  describe '#update' do
     context 'change team name' do
       it 'the team has the changed name' do
         visit new_user_session_path
@@ -41,7 +41,7 @@ RSpec.describe 'Teams', type: :system do
     end
   end
 
-  xdescribe '#destroy' do
+  describe '#destroy' do
     before do
       visit new_user_session_path
       normal_user_log_in

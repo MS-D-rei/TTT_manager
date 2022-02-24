@@ -4,8 +4,7 @@ RSpec.describe 'Users', type: :system do
   let!(:admin_user) { create(:user, name: 'Admin User', email: 'admin1@mail.com', admin: true) }
   let!(:normal_user) { create(:user, name: 'Normal User', email: 'normal1@mail.com') }
 
-  # skip for now
-  xdescribe '#new' do
+  describe '#registration' do
     context 'create new account' do
       it 'increase the number of users by 1' do
         visit new_user_registration_path
@@ -18,8 +17,7 @@ RSpec.describe 'Users', type: :system do
     end
   end
 
-  # skip for now
-  xdescribe '#login' do
+  describe '#login' do
     context 'normal user login' do
       it "show normal user's related tasks" do
         visit new_user_session_path
@@ -30,7 +28,6 @@ RSpec.describe 'Users', type: :system do
     end
   end
 
-  # skip for now
   describe '#update' do
     before do
       visit new_user_session_path
@@ -40,7 +37,7 @@ RSpec.describe 'Users', type: :system do
       sleep(0.5)
     end
 
-    xcontext "update user's profile" do
+    context "update user's profile" do
       it 'change name, email, password' do
         fill_in 'user[name]', with: 'Edited User Name'
         fill_in 'user[email]', with: 'edited@mail.com'
@@ -71,7 +68,7 @@ RSpec.describe 'Users', type: :system do
     end
   end
 
-  xdescribe "#admin_user" do
+  describe "#admin_user" do
     context 'access admin page' do
       it 'show admin user index' do
         visit new_user_session_path
@@ -83,7 +80,7 @@ RSpec.describe 'Users', type: :system do
     end
   end
 
-  xdescribe "#normal_user" do
+  describe "#normal_user" do
     context 'access admin page' do
       it "can't access admin page and get flash message" do
         visit new_user_session_path
