@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     topic_id = @task.topic.id
-    if current_user == task.user || current_user == @task.team.leader
+    if current_user == @task.user || current_user == @task.team.leader
       @task.destroy
       flash[:success] = I18n.t('view.messages.delete_task')
     else

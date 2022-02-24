@@ -108,7 +108,7 @@ RSpec.describe 'Topics', type: :system do
         click_on 'First Team'
         click_on 'First Topic'
         page.accept_confirm do
-          click_on '削除'
+          click_on 'トピック削除'
         end
         sleep(0.5)
         expect(team.topics).not_to include topic

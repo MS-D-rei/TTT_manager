@@ -27,6 +27,7 @@ ja:
     update_topic: トピック更新
     delete_topic: トピック削除
     edit_task: タスク編集
+    update_task: タスク編集
     create_task: タスク作成
     delete_task: タスク削除
     bookmark: ブックマーク
