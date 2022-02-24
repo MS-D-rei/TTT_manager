@@ -24,9 +24,11 @@ ja:
     please_select: 選択してください
     created_by: 制作者
     edit_topic: トピック編集
+    update_topic: トピック更新
+    delete_topic: トピック削除
     edit_task: タスク編集
     create_task: タスク作成
-    delete: 削除
+    delete_task: タスク削除
     bookmark: ブックマーク
     bookmarks: ブックマーク一覧
     belong_to: 所属

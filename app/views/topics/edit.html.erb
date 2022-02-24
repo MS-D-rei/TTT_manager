@@ -1,5 +1,3 @@
-<% provide(:button_name, 'update topic') %>
-
 <div class = 'row'>
 <div class= 'col-7'>
 <%= form_with(model: @topic, local: true) do |f| %>
@@ -22,7 +20,7 @@
 
 <%= f.hidden_field :team_id %>
 
-<%= f.submit yield(:button_name), class: 'btn btn-primary' %>
+<%= f.submit t('view.update_topic'), class: 'btn btn-primary' %>
 <% end %>
 </div>
 </div>
