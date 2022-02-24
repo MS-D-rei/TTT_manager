@@ -4,7 +4,8 @@ RSpec.describe 'Tasks', type: :system do
   let!(:admin_user) { create(:user, name: 'Admin User', email: 'admin@mail.com', admin: true) }
   let!(:normal_user) { create(:user, name: 'Normal User', email: 'normal@mail.com') }
   let!(:team) { create(:team, leader_id: normal_user.id) }
-  let!(:assign) { create(:assign, user_id: admin_user.id, team_id: team.id) }
+  let!(:assing_normal_user) { create(:assign, user_id: normal_user.id, team_id: team.id) }
+  let!(:assign_admin_user) { create(:assign, user_id: admin_user.id, team_id: team.id) }
   let!(:topic) { create(:topic, title: 'First Topic', user_id: normal_user.id, team_id: team.id) }
   let!(:task) { create(:task, title: 'First Task', user_id: normal_user.id, team_id: team.id, topic_id: topic.id) }
 
