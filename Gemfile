@@ -12,6 +12,7 @@ gem 'rails_admin', ['>= 3.0.0.rc', '< 4']
 gem 'cancancan'
 gem 'devise-i18n'
 gem 'ransack'
+gem 'dotenv-rails'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
