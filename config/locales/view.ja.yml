@@ -60,6 +60,7 @@ ja:
       failed_update_task: タスク名と詳細を記入してください
       delete_task: タスクを削除しました
       failed_delete_task: リーダーかタスクの作成者のみ削除できます
+      failed_login: メールアドレスとパスワードの組み合わせが違います
   user:
     name: ユーザー名
     email: メールアドレス

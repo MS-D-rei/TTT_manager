@@ -25,7 +25,7 @@ class Users::SessionsController < Devise::SessionsController
     if @user&.valid_password?(params[:user][:password])
       sign_in @user
     else
-      flash[:danger] = 'Invalid email/password combination.'
+      flash[:danger] = I18n.t('view.messages.failed_login')
     end
     redirect_to root_url
   end
