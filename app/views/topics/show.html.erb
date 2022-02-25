@@ -1,12 +1,10 @@
 <% provide(:button_name, 'create task') %>
 <h3><%= @topic.title %></h3>
 
-<%= t('view.login_user') %>: <%= current_user.name %><br>
-
-<%= link_to t('view.edit_topic'), edit_topic_path(@topic), class: 'btn btn-primary' %><br>
+<p><%= t('view.login_user') %>: <%= current_user.name %></p>
 
 <div class='row'>
-  <div class='col-5'>
+  <div class='col-7'>
     <%= t('view.created_by') %>: <%= @topic.user.name %> / email: <%= @topic.user.email %><br>
     <%= t('view.belong_to') %>: <%= link_to "#{@topic.team.name}", team_path(@topic.team) %><br>
     <%= t('topic.priority') %>: <%= @topic.priority %><br>
@@ -17,15 +15,18 @@
 
 <div class='row'>
   <div class='col-8'>
-<%= t('topic.description') %>: <%= @topic.description %><br>
+    <p><%= t('topic.description') %>: <%= @topic.description %></p><br>
   </div>
 </div>
 
-<%# # Button to delete topic %>
-<%# # Leader or topic maker can delete %>
-<% if current_user == @topic.user || current_user == @topic.team.leader %>
-<%= button_to t('view.delete_topic'), topic_path(@topic), method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger' %>
-<% end %>
+<div class='edit-delete-button'>
+  <%= link_to t('view.edit_topic'), edit_topic_path(@topic), class: 'btn btn-primary', id: 'btn-positive' %>
+  <%# # Button to delete topic %>
+  <%# # Leader or topic maker can delete %>
+  <% if current_user == @topic.user || current_user == @topic.team.leader %>
+  <%= button_to t('view.delete_topic'), topic_path(@topic), method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger btn-delete', id: 'btn-negative' %>
+  <% end %>
+</div>
 
 <%# # Render tasks table %>
 <%= render 'topic_contents' %>

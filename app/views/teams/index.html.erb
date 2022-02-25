@@ -3,7 +3,7 @@
 <%= form_with(model: Team.new, local: true) do |f| %>
   <%= f.text_field :name %>
   <%= f.hidden_field :leader_id, value: current_user.id %>
-  <%= f.submit t('view.create_team'), class: 'btn btn-primary' %>
+  <%= f.submit t('view.create_team'), class: 'btn btn-primary', id: 'btn-positive' %>
 <% end %>
 
 <table class='table-teams'>

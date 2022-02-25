@@ -1,6 +1,7 @@
 ja:
   view:
-    all_tasks: 全てのタスク
+    forget_password: パスワードを忘れた場合
+    all_tasks: 全ての関連タスク
     edit_profile: アカウント編集
     admin: 管理者画面
     login_user: ログインユーザー

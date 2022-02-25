@@ -1,6 +1,18 @@
-<% @users.each do |user| %>
+<h2><%= t('view.users') %></h2>
 
-<%= link_to "#{user.name}", user_path(user) %><br>
-<%= user.email %><br>
-
-<% end %>
+<table class='table-users'>
+  <thead>
+  </thead>
+    <tr>
+      <th><%= t('user.name') %></th>
+      <th><%= t('user.email') %></th>
+    </tr>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to "#{user.name}", user_path(user) %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

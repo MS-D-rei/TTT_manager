@@ -1,4 +1,4 @@
-<div class = 'row topic-create-form-row'>
+<div>
 <div class= 'col-7 topic-create-form'>
 <%= form_with(model: Topic.new, local: true) do |f| %>
 <%= render 'devise/shared/error_messages', resource: f.object %>
@@ -7,7 +7,7 @@
 <%= f.text_field :title, class: 'form-control' %><br>
 
 <%= f.label :description %>
-<%= f.text_field :description, class: 'form-control' %>
+<%= f.text_area :description, class: 'form-control' %>
 
 <%= f.label :priority %>
 <%= f.select :priority, Topic.priorities.keys.map { |key| [key, key] } %><br>
@@ -20,7 +20,7 @@
 
 <%= f.hidden_field :team_id, value: @team.id %>
 
-<%= f.submit t('view.create_topic'), class: 'btn btn-primary' %>
+<%= f.submit t('view.create_topic'), class: 'btn btn-primary', id: 'btn-positive' %>
 <% end %>
 </div>
 </div>

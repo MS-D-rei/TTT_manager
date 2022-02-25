@@ -1,5 +1,5 @@
 <% unless @topic.tasks.blank? %>
-<table>
+<table class='topic-table'>
   <thead>
     <tr>
       <th><%= t('task.title') %></th>
@@ -35,7 +35,7 @@
         <% end %>
         <%# # Leader or topic maker can delete the task %>
         <% if current_user == task.user || current_user == @topic.team.leader %>
-        <td><%= button_to t('view.delete_task'), task_path(task), { method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger' } %>
+        <td><%= button_to t('view.delete_task'), task_path(task), { method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger', id: 'btn-negative' } %>
         <% end %>
       </tr>
     <% end %>

@@ -12,6 +12,9 @@
             <li><%= link_to t('view.admin'), rails_admin_path %>
           <% end %>
         <li><%= link_to t('view.log_out'), destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'ゲストアドミンログイン', users_guest_sign_in_path, { method: :post, id: 'guest-admin-login' } %></li>
+          <li><%= link_to 'ゲスト一般ログイン', users_guest_sign_in_as_normal_path, { method: :post, id: 'guest-normal-login' } %></li>
         <% end %>
       </ul>
     </nav>

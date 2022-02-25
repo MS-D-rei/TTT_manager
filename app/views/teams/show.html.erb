@@ -1,6 +1,6 @@
 <h3><%= @team.name %></h3>
 
-<%= t('view.login_user') %>: <%= current_user.name %><br>
+<p><%= t('view.login_user') %>: <%= current_user.name %></p>
 
 <div class='row'>
   <%# # show team leader and members %>
@@ -27,7 +27,7 @@
           
           <%# # Drop button. Leader can push it %>
           <% if current_user == @team.leader %>
-          <td><%= button_to t('view.drop'), assign_path(assign), { method: :delete, params: { user_id: assign.user.id, team_id: @team.id }, class: 'btn btn-danger' } %></td>
+          <td><%= button_to t('view.drop'), assign_path(assign), { method: :delete, params: { user_id: assign.user.id, team_id: @team.id }, class: 'btn btn-danger', id: 'btn-negative' } %></td>
           <% end %>
         </tr>
         <% end %>
@@ -46,7 +46,7 @@
         <%= f.text_field :name, class: 'form-control' %>
         <%= f.hidden_field :leader_id, value: @team.leader_id %>
 
-        <%= f.submit t('view.update_name'), class: 'btn btn-primary' %>
+        <%= f.submit t('view.update_name'), class: 'btn btn-primary', id: 'btn-positive' %>
       <% end %>
       </div>
 
@@ -58,7 +58,7 @@
         <%= f.select :user_id, User.pluck(:name, :id), include_blank: t('view.please_select') %>
         <%= f.hidden_field :team_id, value: @team.id %>
 
-        <%= f.submit t('view.invite'), class: 'btn btn-primary' %>
+        <%= f.submit t('view.invite'), class: 'btn btn-primary', id: 'btn-positive' %>
       <% end %>
       </div>
 
@@ -66,7 +66,7 @@
       <%# # can delete when this team has no topic %>
       <div class='team-disband-button'>
         <p>チーム解散</p>
-        <%= button_to t('view.delete_team'), team_path(@team), method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger' %>
+        <%= button_to t('view.delete_team'), team_path(@team), method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger', id: 'btn-negative' %>
       </div>
     <% end %>
   </div>

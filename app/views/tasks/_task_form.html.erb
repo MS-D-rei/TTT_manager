@@ -1,19 +1,19 @@
 <div class = 'row'>
-<div class= 'col-7'>
+<div class= 'col-7 task-create-form'>
 <%= form_with(model: Task.new, local: true) do |f| %>
 <%= render 'devise/shared/error_messages', resource: f.object %>
 
 <%= f.label :title %>
-<%= f.text_field :title %><br>
+<%= f.text_field :title, class: 'form-control' %><br>
 
 <%= f.label :description %>
-<%= f.text_field :description %>
+<%= f.text_area :description, class: 'form-control' %>
 
 <%= f.label :priority %>
 <%= f.select :priority, Task.priorities.keys.map { |key| [key, key] } %><br>
 
 <%= f.label :deadline %>
-<%= f.datetime_select :deadline %>
+<%= f.datetime_select :deadline %><br>
 
 <%= f.label :status %>
 <%= f.select :status, Task.statuses.keys.map { |key| [key, key] } %><br>
@@ -21,7 +21,7 @@
 <%= f.hidden_field :team_id, value: @topic.team.id %>
 <%= f.hidden_field :topic_id, value: @topic.id %>
 
-<%= f.submit t('view.create_task'), class: 'btn btn-primary' %>
+<%= f.submit t('view.create_task'), class: 'btn btn-primary', id: 'btn-positive' %>
 <% end %>
 </div>
 </div>
