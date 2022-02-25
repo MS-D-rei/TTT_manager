@@ -1,10 +1,22 @@
 <div class='row login-page justify-content-md-center'>
-  <div class='col-5 title-text'>
-    <div>
+  <div class='col-6'>
+    <div class='title-text'>
       <h2>TTT Manager</h2>
     </div>
+    <div>
+      <p>概要: Task階層管理共有アプリ</p>
+      <p>Team/Topic/Taskの3層でTaskを管理共有するアプリです</p>
+      <p>1. 自分に関連する全Taskをトップページで表示します</p>
+      <p>2. TeamからTopicを、TopicからTaskを作成できます</p>
+      <p>3. 自分のTaskをタイトルもしくは優先度で検索できます</p>
+      <p>4. 自分他者問わず、Taskにブックマークでき、ブックマークしたTaskを一覧表示できます</p>
+    </div>
   </div>
-  <div class='col-5'>
+
+  <div class='col-1'>
+  </div>
+
+  <div class='col-3 form-border'>
     <%# <% # form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= form_with(url: user_session_path, scope: :user, local: true) do |f| %>
     <div class="field">
@@ -29,5 +41,6 @@
     </div>
     <% end %>
 
-  <%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
   </div>
+</div>

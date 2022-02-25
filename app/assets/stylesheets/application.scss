@@ -53,13 +53,11 @@ p {
   border: 2px solid $red-darker;
 }
 
-// .link {
-//   text-decoration: none;
-// }
-
-// .link:hover {
-//   text-decoration: underline;
-// }
+.form-border {
+  border: 3px solid $cian-dark;
+  border-radius: 1em;
+  padding: 5%;
+}
 
 header {
   color: whitesmoke;
@@ -98,18 +96,30 @@ footer {
   bottom: 0;
   background-color: #212529;
   border-top: 3px solid $cian-dark;
-  text-align: center;
 
   p {
     color: whitesmoke;
   }
 }
 
+.footer-title {
+  position: relative;
+  text-align: center;
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, 50%);
+    width: 100%;
+  }
+}
+
 // login page
 
 .title-text {
-  text-align: center;
   position: relative;
+  margin-bottom: 5%;
   div {
     position: absolute;
     top: 30%;
@@ -121,8 +131,8 @@ footer {
 
 
 .login-page {
-  padding-top: 10%;
-  width: 80%
+  padding-top: 8%;
+  width: 100%
 }
 
 .btn-registration {
