@@ -68,6 +68,7 @@ ja:
     remember_me: ログインを記憶
   team:
     name: チーム名
+    leader: リーダー
   topic:
     title: トピック名
     description: 詳細

@@ -39,7 +39,8 @@
     <%# # only leader can change team name, invite members, and disband team %>
     <% if current_user == @team.leader %>
       <%# # Form to update team name %>
-      <div>
+      <div class='team-edit-form'>
+      <p>チーム名変更</p>
       <%= form_with(model: @team, local: true) do |f| %>
 
         <%= f.text_field :name, class: 'form-control' %>
@@ -50,7 +51,8 @@
       </div>
 
       <%# # Form to invite new member %>
-      <div>
+      <div class='member-invite-form'>
+      <p>メンバー招待</p>
       <%= form_with(model: Assign.new, local: true) do |f| %>
 
         <%= f.select :user_id, User.pluck(:name, :id), include_blank: t('view.please_select') %>
@@ -58,10 +60,13 @@
 
         <%= f.submit t('view.invite'), class: 'btn btn-primary' %>
       <% end %>
+      </div>
 
       <%# # Button to disband this team %>
       <%# # can delete when this team has no topic %>
-      <%= button_to t('view.delete_team'), team_path(@team), method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger' %>
+      <div class='team-disband-button'>
+        <p>チーム解散</p>
+        <%= button_to t('view.delete_team'), team_path(@team), method: :delete, data: { confirm: '本当にいいですか？' }, class: 'btn btn-danger' %>
       </div>
     <% end %>
   </div>

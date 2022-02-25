@@ -1,4 +1,4 @@
-<h3>Team #index</h3>
+<h3><%= t('view.teams') %></h3>
 
 <%= form_with(model: Team.new, local: true) do |f| %>
   <%= f.text_field :name %>
@@ -6,24 +6,24 @@
   <%= f.submit t('view.create_team'), class: 'btn btn-primary' %>
 <% end %>
 
-<table>
+<table class='table-teams'>
   <thead>
     <tr>
-      <th>Team.name</th>
-      <th>Leader</th>
-      <th>Members</th>
+      <th><%= t('team.name') %></th>
+      <th><%= t('team.leader') %></th>
+      <th><%= t('view.member') %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @teams.each do |team| %>
     <tr>
-      <td><%= link_to "#{team.name}", team_path(team) %>
-      <td><%= team.leader.name %></td>
+      <td><%= link_to "#{team.name}", team_path(team) %></td>
+      <td><span class='table-text'><%= team.leader.name %></span></td>
       <td>
       <% team.members.each do |user| %>
       <% next if user.name == team.leader.name %>
-      <%= user.name %><br>
+      <%= user.name %>, 
       <% end %>
       </td>
     </tr>

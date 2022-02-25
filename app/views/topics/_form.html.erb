@@ -1,19 +1,19 @@
-<div class = 'row'>
-<div class= 'col-7'>
+<div class = 'row topic-create-form-row'>
+<div class= 'col-7 topic-create-form'>
 <%= form_with(model: Topic.new, local: true) do |f| %>
 <%= render 'devise/shared/error_messages', resource: f.object %>
 
-<%= f.label :title %>
-<%= f.text_field :title %><br>
+<%= f.label :title %><br>
+<%= f.text_field :title, class: 'form-control' %><br>
 
 <%= f.label :description %>
-<%= f.text_field :description %>
+<%= f.text_field :description, class: 'form-control' %>
 
 <%= f.label :priority %>
 <%= f.select :priority, Topic.priorities.keys.map { |key| [key, key] } %><br>
 
 <%= f.label :deadline %>
-<%= f.datetime_select :deadline %>
+<%= f.datetime_select :deadline %><br>
 
 <%= f.label :status %>
 <%= f.select :status, Topic.statuses.keys.map { |key| [key, key] } %><br>

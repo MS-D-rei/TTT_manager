@@ -14,35 +14,188 @@
  *= require_self
  */
 
- header {
-   a {
-     margin-left: 10px;
-   }
- }
+$cian-dark: rgb(3, 164, 175);
+$gray-darker: rgb(65, 69, 78);
 
- table {
-   margin-top: 15px;
-   width: 100%;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+  color: $gray-darker;
+}
 
-   thead {
-    border-bottom: 1px solid gray;
-   }
+h1 {
+  font-size: 3em;
+}
 
-   tbody {
-     tr {
-       border-bottom: 1px solid gray;
-     }
-   }
- }
+h2 {
+  font-size: 1.2em;
+}
 
- button {
-   border: 0px solid white;
-   background-color: transparent;
-   padding: 0px;
- }
+p {
+  font-size: 1.0em;
+  color: $gray-darker;
+}
 
- .row-border {
-   border-top: 1px solid gray;
-   border-bottom: 1px solid gray;
-   margin-bottom: 20px;
- }
+// .link {
+//   text-decoration: none;
+// }
+
+// .link:hover {
+//   text-decoration: underline;
+// }
+
+header {
+  color: whitesmoke;
+  background-color: #212529;
+  border-bottom: 3px solid $cian-dark;
+
+  a {
+    margin-left: 10px;
+    color: whitesmoke;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: whitesmoke;
+  }
+}
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 4rem;
+  box-sizing: border-box;
+}
+
+.container-body {
+  margin-top: 1%;
+}
+
+// footer
+
+footer {
+  width: 100%;
+  height: 4rem;
+  position: absolute;
+  bottom: 0;
+  background-color: #212529;
+  border-top: 3px solid $cian-dark;
+  text-align: center;
+
+  p {
+    color: whitesmoke;
+  }
+}
+
+// user show view
+
+#task_search {
+  color: $gray-darker;
+}
+
+// table
+
+table {
+  margin-top: 2%;
+  width: 100%;
+  color: $gray-darker;
+
+  thead {
+    border-bottom: 1px solid $cian-dark;
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $cian-dark;
+    }
+
+    td {
+      height: 3rem;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.table-text {
+  color: $gray-darker;
+}
+
+// team index view
+
+.table-teams {
+  width: 80%;
+
+  td {
+    height: 3rem;
+  }
+}
+
+// team show view
+
+.team-edit-form {
+  p {
+    margin-bottom: 10px;
+  }
+
+  #team_name {
+    margin-bottom: 5px;
+  }
+}
+
+.member-invite-form {
+  margin-top: 20px;
+  p {
+    margin-bottom: 10px;
+  }
+
+}
+
+.team-disband-button {
+  margin-top: 30px;
+}
+
+.topic-create-form-row {
+  margin-top: 15px;
+}
+
+.topic-create-form {
+  margin-top: 15px;
+  #topic_description {
+    margin-bottom: 15px;
+  }
+  #topic_priority {
+    margin-bottom: 10px;
+  }
+  #topic_status {
+    margin-bottom: 15px;
+  }
+  #topic_deadline_5i {
+    margin-bottom: 10px;
+  }
+}
+
+// topic show view
+
+button {
+  border: 0px solid white;
+  background-color: transparent;
+  padding: 0px;
+}
+
+.row-border {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+}
