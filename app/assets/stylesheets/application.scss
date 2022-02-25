@@ -59,6 +59,14 @@ p {
   padding: 5%;
 }
 
+// keep form after error happened
+
+.field_with_errors {
+  display: contents;
+}
+
+// header
+
 header {
   color: whitesmoke;
   background-color: #212529;
