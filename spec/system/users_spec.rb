@@ -10,7 +10,7 @@ RSpec.describe 'Users', type: :system do
     create(:task, title: 'First Task', user_id: normal_user.id, team_id: team.id, topic_id: topic.id)
   end
   let!(:second_task) do
-    create(:task, title: 'Second Task', priority: 'middle', user_id: normal_user.id, team_id: team.id, topic_id: topic.id)
+    create(:task, title: 'Second Task', priority: 'middle', status: 'doing', user_id: normal_user.id, team_id: team.id, topic_id: topic.id)
   end
 
   describe '#registration' do
@@ -100,12 +100,15 @@ RSpec.describe 'Users', type: :system do
   end
 
   describe '#ransack' do
+    let!(:search_keyword) { 'Second' }
+    let!(:not_keyword) { 'First' }
+
     before do
       visit new_user_session_path
       normal_user_log_in
     end
 
-    context 'user click search button without parameters' do
+    context 'search button without selecting anything' do
       it 'shows all tasks the user maked' do
         click_on '検索'
         expect(page).to have_content 'First Task'
@@ -113,28 +116,52 @@ RSpec.describe 'Users', type: :system do
       end
     end
 
-    context 'user input task title and click search button' do
+    context 'search button with task title' do
       it 'shows the task which have the title' do
-        find('#q_title_cont').set('Second')
+        find('#q_title_cont').set(search_keyword)
         click_on '検索'
         expect(page).to have_content 'Second Task'
+        expect(all('#task_title')).not_to include not_keyword
       end
     end
 
-    context 'user select priority and click search button' do
+    context 'search button with task priority' do
       it 'shows the task which have the priority' do
         choose 'q_priority_eq_0' # high
         click_on '検索'
         expect(page).to have_content 'First Task'
+        expect(page).not_to have_content 'Second Task'
       end
     end
 
-    context 'user input task title and select priority and then click search button' do
+    context 'search button with task title and priority' do
       it 'shows the task which have the task title and priority' do
-        find('#q_title_cont').set('Second')
+        search_keyword = 'Second'
+        not_keyword = 'First'
+        find('#q_title_cont').set(search_keyword)
         choose 'q_priority_eq_1' # middle
         click_on '検索'
-        expect(page).to have_content 'Second Task'
+        expect(page).to have_content search_keyword
+        expect(all('#task_title')).not_to include not_keyword
+      end
+    end
+
+    context 'user click column 1 time after clicking search button' do
+      it 'sort each task by ascending order' do
+        click_on '検索'
+        click_on '優先度'
+        expect(first('#task_title')).to have_content 'First Task'
+      end
+    end
+
+    context 'user click column 2 times after clicking searching button' do
+      it 'sort each task by descending order' do
+        click_on '検索'
+        click_on '優先度'
+        sleep(0.3)
+        click_on '優先度'
+        sleep(0.3)
+        expect(first('#task_title')).to have_content 'Second Task'
       end
     end
   end
