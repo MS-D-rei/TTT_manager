@@ -20,20 +20,8 @@
         <td><%= task.priority %></td>
         <td><%= task.deadline.strftime("%Y/%m/%d %H:%M") %></td>
         <td><%= task.status %></td>
-        <%# # only leader or task creater can delete the task %>
-        <% if current_user.bookmark?(task) %>
-          <td>
-          <%= button_to bookmark_path(current_user.bookmarks.find_by(task_id: task.id)), { method: :delete } do %>
-            <i class="fa-solid fa-square-check"></i>
-          <% end %>
-          </td>
-        <% else %>
-          <td>
-          <%= button_to bookmarks_path(task_id: task.id) do %>
-            <i class="fa-solid fa-square"></i>
-          <% end %>
-          </td>
-        <% end %>
+        <%# # Bookmark buttons %>
+        <td id='bookmark_button_<%= task.id %>'><%= render 'bookmarks/bookmark_buttons', task: task %></td>
       </tr>
     <% end %>
   </tbody>
