@@ -18,8 +18,8 @@ User.create!(
 end
 
 # teams creation
-5.times do
-  name = Faker::Lorem.sentence(word_count: 1)
+5.times do |n|
+  name = "Team #{n + 1}"
   Team.create!(
     name: name,
     leader_id: rand(1..5)
@@ -47,9 +47,17 @@ end
 
 # topics and tasks creation
 users = User.all
+description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ Integer feugiat scelerisque gravida. Phasellus a turpis porttitor arcu porta tristique.
+  Vestibulum semper molestie fringilla. Aliquam aliquet leo lectus,
+   eget semper felis posuere sed. Aliquam eleifend blandit sodales.
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+     Aliquam a est pharetra, hendrerit sem vitae, finibus mauris.
+      Ut malesuada rhoncus risus, sit amet pretium urna. Donec porttitor vehicula enim,
+       eget vulputate orci dignissim et. Sed in tortor vestibulum, rhoncus ligula nec, consequat erat.'
 3.times do |n|
-  topic_title = Faker::Lorem.sentence(word_count: 2)
-  topic_description = Faker::Lorem.sentence(word_count: 50)
+  topic_title = "Topic title #{n + 1}"
+  topic_description = description
   topic_priority = rand(0..2)
   topic_deadline = Time.zone.now + 60 * 60 * 24 * (n + 1)
   topic_status = rand(0..2)
@@ -64,9 +72,9 @@ users = User.all
       team_id: team_id
     )
     topic_id = topic.id
-    3.times do
-      task_title = Faker::Lorem.sentence(word_count: 2)
-      task_description = Faker::Lorem.sentence(word_count: 50)
+    3.times do |i|
+      task_title = "Task title #{i + 1}"
+      task_description = description
       task_priority = rand(0..2)
       task_deadline = Time.zone.now + 60 * 60 * 24 * (n + 1)
       task_status = topic_status
