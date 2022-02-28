@@ -9,13 +9,10 @@ class BookmarksController < ApplicationController
     @task = Task.find(params[:task_id])
     @bookmark = @task.bookmarks.new(user_id: current_user.id)
     respond_to do |format|
-      if @bookmark.save
-        format.js { render :create }
-      else
-        format.html { redirect_to request.referer }
-      end
+      return format.html { redirect_to request.referer } unless @bookmark.save
+
+      format.js { render :create }
     end
-    # current_user.bookmark(@task)
   end
 
   def destroy

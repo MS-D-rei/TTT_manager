@@ -1,13 +1,9 @@
 <% if current_user.bookmark?(task) %>
-  <td>
-    <%= button_to bookmark_path(current_user.bookmarks.find_by(task_id: task.id)), { method: :delete, remote: true } do %>
-      <i class="fa-solid fa-square-check"></i>
-    <% end %>
-  </td>
+  <%= button_to bookmark_path(current_user.bookmarks.find_by(task_id: task.id)), { method: :delete, remote: true } do %>
+    <i class="fa-solid fa-square-check"></i>
+  <% end %>
 <% else %>
-  <td>
-    <%= button_to bookmarks_path(task_id: task.id), remote: true do %>
-      <i class="fa-solid fa-square"></i>
-    <% end %>
-  </td>
+  <%= button_to bookmarks_path(task_id: task.id), remote: true do %>
+    <i class="fa-solid fa-square"></i>
+  <% end %>
 <% end %>

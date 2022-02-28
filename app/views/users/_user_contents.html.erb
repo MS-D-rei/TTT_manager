@@ -44,9 +44,8 @@
           <td><%= task.deadline.strftime("%Y/%m/%d") %></td>
           <td><%= task.status %></td>
           <td><%= task.created_at.strftime("%Y/%m/%d") %></td>
-          <div id='bookmark_button_<%= task.id %>'>
-            <%= render 'bookmarks/bookmark_buttons', task: task %>
-          </div>
+          <td id='bookmark_button_<%= task.id %>'><%= render 'bookmarks/bookmark_buttons', task: task %></td>
+          </td>
           </tr>
         <% end %>
       <% end %>
