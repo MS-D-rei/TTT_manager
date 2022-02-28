@@ -26,12 +26,6 @@ class UsersController < ApplicationController
   end
 
   def set_q
-    # 他のユーザーのタスクも検索かけたいが:idをsearch_form_forで取得できない
-    # user = if params[:id].nil?
-    #          current_user
-    #        else
-    #          User.find(params[:id])
-    #        end
     @q = current_user.tasks.ransack(params[:q])
   end
 end
